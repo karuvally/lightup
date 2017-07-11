@@ -22,14 +22,15 @@ def brightness(brightness_file_path, function, value):
 
 
 # copy executable, symlink and set permissions
-def install_lightup(brighntess_file_path):
-    # set permission
+def install_lightup(brightness_file_path):
+    # set backlight file permission
     os.chmod(brightness_file_path, 0o666)
     
     # copy and symlink essential files
     os.makedirs('/opt/lightup')
     try:
         shutil.copyfile('lightup.py', '/opt/lightup/lightup.py')
+        os.chmod('/opt/lightup/lightup.py', 0o777)
         os.symlink('/opt/lightup/lightup.py', '/usr/bin/lightup')
     except:
         print('error: unable to copy the application files, exiting...')
