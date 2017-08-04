@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# lightup (alpha release)
+# lightup 0.1
 # Thanks to wavexx(acpilight) for udev idea
 # Copyright 2017, Aswin Babu Karuvally
 
@@ -25,6 +25,9 @@ def brightness(brightness_file_path, function, value):
 def install_lightup(brightness_file_path):
     # set backlight file permission
     os.chmod(brightness_file_path, 0o666)
+    crontab = open('/etc/crontab', 'a')
+    crontab.write('@reboot chmod 666 ' + brightness_file_path)
+    crontab.close()
     
     # copy and symlink essential files
     os.makedirs('/opt/lightup')

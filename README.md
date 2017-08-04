@@ -17,3 +17,7 @@ Run lightup -b <brightness_value>
 - Automated backlight path finding
 - Change backlight using function keys
 - Fading backlight adjustments
+
+## Alternatives
+acpilight is a nice alternative to lightup, and has better capabilities at 
+the moment
