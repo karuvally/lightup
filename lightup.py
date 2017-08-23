@@ -24,10 +24,8 @@ def brightness(brightness_file_path, function, value):
 # copy executable, symlink and set permissions
 def install_lightup(brightness_file_path):
     # set backlight file permission
-    os.chmod(brightness_file_path, 0o666)
-    crontab = open('/etc/crontab', 'a')
-    crontab.write('@reboot chmod 666 ' + brightness_file_path)
-    crontab.close()
+    print('setting permissions...')
+    shutil.copyfile('90-backlight.rules', '/etc/udev/rules.d/')
     
     # copy and symlink essential files
     os.makedirs('/opt/lightup')
