@@ -25,7 +25,7 @@ def brightness(brightness_file_path, function, value):
 def install_lightup(brightness_file_path):
     # set backlight file permission
     print('setting permissions...')
-    shutil.copyfile('90-backlight.rules', '/etc/udev/rules.d/')
+    shutil.copy('90-backlight.rules', '/etc/udev/rules.d')
     
     # copy and symlink essential files
     os.makedirs('/opt/lightup')
