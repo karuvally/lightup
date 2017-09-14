@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# lightup 0.1
+# lightup 0.2
 # Thanks to wavexx(acpilight) for udev idea
 # Copyright 2017, Aswin Babu Karuvally
 
@@ -32,9 +32,11 @@ def install_lightup(brightness_file_path):
 
         print('setting permissions...')
         shutil.copy('90-backlight.rules', '/etc/udev/rules.d')
-    except:
+    except PermissionError:
         print('error: do you have root permissions?')
         exit()
+    except FileExistsError:
+        print('error: some of the files already exists')
 
 
 # the main function
