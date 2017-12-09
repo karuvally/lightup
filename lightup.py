@@ -27,11 +27,12 @@ def install_lightup(brightness_file_path):
         print('copying files...')
         os.makedirs('/opt/lightup')
         shutil.copyfile('lightup.py', '/opt/lightup/lightup.py')
-        os.chmod('/opt/lightup/lightup.py', 0o777)
         os.symlink('/opt/lightup/lightup.py', '/usr/bin/lightup')
+        shutil.copy('90-backlight.rules', '/etc/udev/rules.d/')
 
         print('setting permissions...')
-        shutil.copy('90-backlight.rules', '/etc/udev/rules.d')
+        os.chmod('/opt/lightup/lightup.py', 0o777)
+        os.chmod('/etc/udev/rules.d/90-backlight.rules', 0o777)
     except PermissionError:
         print('error: do you have root permissions?')
         exit()
