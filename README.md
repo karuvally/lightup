@@ -8,7 +8,7 @@ longer works.
 
 ## Installation
 - Clone the git repository or download as zip and unzip the contents
-- Run ./lightup.py --install as root
+- Run ./install.sh as root
 
 ## Usage
 Run lightup -b <brightness_value>
@@ -17,6 +17,7 @@ Run lightup -b <brightness_value>
 - Automated backlight path finding
 - Change backlight using function keys
 - Fading backlight adjustments
+- Reload udev rules without reboot
 
 ## Alternatives
 acpilight is a nice alternative to lightup, and has better capabilities at 
