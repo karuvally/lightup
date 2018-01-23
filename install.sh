@@ -1,5 +1,5 @@
 #!/bin/bash
-# lightup installation script, release 0.1
+# lightup installation script, release 0.2
 
 # copy the files
 echo "copying files..."
@@ -13,8 +13,10 @@ ln -s /opt/lightup/lightup.py /usr/bin/lightup
 
 # set the permissions
 echo "setting permissions..."
-chmod 777 /opt/lightup/lightup.py
-chmod 777 /etc/udev/rules.d/90-backlight.rules
+chmod 555 /opt/lightup/lightup.py
+
+# add user to video group
+gpasswd -a $LOGNAME video
 
 # tell user to restart
 echo "okay, you might have to restart now :)"
