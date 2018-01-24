@@ -17,8 +17,11 @@ def brightness(brightness_file_path, function, value):
         brightness_file.close()
     
     elif function == 'set':
-        brightness_file = open(brightness_file_path, 'w')
-        brightness_file.write(value)
+        brightness_file = open(brightness_file_path, 'r+')
+        curr_val = brightness_file.readline().rstrip()
+        value = int(curr_val)+int(value)
+        brightness_file.write(str(value))
+        brightness_file.close()
 
 
 # the main function
