@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# lightup, release 0.3
+# lightup, release 0.4
 # Thanks to wavexx(acpilight) for udev idea
 # Copyright 2017, Aswin Babu Karuvally
+# Copyright 2018, Aswin Babu Karuvally, Bipin Peacerebel
 
 # import the serious stuff
 import os
@@ -16,16 +17,22 @@ def brightness(brightness_file_path, function, value):
         print("current brightness is " + brightness_file.readline().rstrip())
         brightness_file.close()
 
-    elif function == 'inc':
-        brightness_file = open(brightness_file_path, 'r+')
-        curr_val = brightness_file.readline().rstrip()
-        value = int(curr_val)+int(value)
-        brightness_file.write(str(value))
-        brightness_file.close()
-
     elif function == 'set':
         brightness_file = open(brightness_file_path, 'r+')
         brightness_file.write(value)
+        brightness_file.close()
+
+    # common code for increment and decrement
+
+    elif function:
+        brightness_file = open(brightness_file_path, 'r+')
+        current_value = brightness_file.readline().rstrip()
+
+        if function == 'increment':
+            brightness_file.write(str(int(current_value) + int(value)))
+        elif function == 'decrement':
+            brightness_file.write(str(int(current_value) - int(value)))
+        
         brightness_file.close()
 
 
@@ -36,24 +43,36 @@ def main():
     
     # parse run-time arguments
     parser = argparse.ArgumentParser(description=
-        'lightup, adjust your backlight brightness')
-    parser.add_argument('-b', '--brightness', help='set backlight')
-    parser.add_argument('-i', '--increment', help='Increase brightness')
+    'Lightup v0.4, adjust your backlight brightness')
+
+    parser.add_argument('-b', '--brightness', help=
+    'set brightness to given value')
+    
+    parser.add_argument('-i', '--increment', help=
+    'decrease brightness by given value')
+    
+    parser.add_argument('-d', '--decrement', help=
+    'decrease brightness by given value')
+    
     arguments = parser.parse_args()
     
-    # set brightness
-    if arguments.brightness: # in ['-b', '--brightness']:
+    # set brightness using the -b argument
+    if arguments.brightness:
         brightness(brightness_file_path, 'set', arguments.brightness)
 
-    # increase brightness
-    elif arguments.increment: # in ['-i', '--increment']:
-        brightness(brightness_file_path, 'inc', arguments.increment)
+    # increase brightness using the -i argument
+    elif arguments.increment:
+        brightness(brightness_file_path, 'increment', arguments.increment)
+
+    # decrease brightness using the -d argument
+    elif arguments.decrement:
+        brightness(brightness_file_path, 'decrement', arguments.decrement)
         
     # return current brightness
     else:
-        print('here')
         brightness(brightness_file_path, 'get', None)
 
 
 # run the main function
 main()
+
