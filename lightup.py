@@ -46,11 +46,7 @@ def main():
         brightness(brightness_file_path, 'set', arguments.brightness)
 
     # increase brightness
-<<<<<<< HEAD
-    elif arguments.increment:
-=======
     elif arguments.increment: # in ['-i', '--increment']:
->>>>>>> 6239a563a3b3860c28ee34c97dbd1220add0ac7b
         brightness(brightness_file_path, 'inc', arguments.increment)
         
     # return current brightness
