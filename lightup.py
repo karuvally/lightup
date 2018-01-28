@@ -15,10 +15,18 @@ def brightness(brightness_file_path, function, value):
         brightness_file = open(brightness_file_path, 'r')
         print("current brightness is " + brightness_file.readline().rstrip())
         brightness_file.close()
-    
+
+    elif function == 'inc':
+        brightness_file = open(brightness_file_path, 'r+')
+        curr_val = brightness_file.readline().rstrip()
+        value = int(curr_val)+int(value)
+        brightness_file.write(str(value))
+        brightness_file.close()
+
     elif function == 'set':
-        brightness_file = open(brightness_file_path, 'w')
+        brightness_file = open(brightness_file_path, 'r+')
         brightness_file.write(value)
+        brightness_file.close()
 
 
 # the main function
@@ -30,14 +38,20 @@ def main():
     parser = argparse.ArgumentParser(description=
         'lightup, adjust your backlight brightness')
     parser.add_argument('-b', '--brightness', help='set backlight')
+    parser.add_argument('-i', '--increment', help='Increase brightness')
     arguments = parser.parse_args()
     
     # set brightness
-    if arguments.brightness:
+    if arguments.brightness: # in ['-b', '--brightness']:
         brightness(brightness_file_path, 'set', arguments.brightness)
-    
+
+    # increase brightness
+    elif arguments.increment: # in ['-i', '--increment']:
+        brightness(brightness_file_path, 'inc', arguments.increment)
+        
     # return current brightness
     else:
+        print('here')
         brightness(brightness_file_path, 'get', None)
 
 

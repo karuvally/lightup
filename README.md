@@ -23,3 +23,6 @@ Run lightup -b <brightness_value>
 ## Alternatives
 acpilight is a nice alternative to lightup, and has better capabilities at 
 the moment
+
+##Troubleshooting
+ -if you get permission errot for `brightness` file, change its permission to 756 or higher.
