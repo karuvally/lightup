@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# lightup, release 0.4
+# lightup, release 0.5
 # Thanks to wavexx(acpilight) for udev idea
 # Copyright 2017, Aswin Babu Karuvally
 # Copyright 2018, Aswin Babu Karuvally, Bipin Peacerebel

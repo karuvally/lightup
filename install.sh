@@ -1,5 +1,5 @@
 #!/bin/bash
-# lightup installation script, release 0.2
+# lightup installation script, release 0.5
 
 # copy the files
 echo "copying files..."
