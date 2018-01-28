@@ -1,4 +1,4 @@
-#Lightup
+# Lightup  
 An xbacklight replacement
 
 ## Introduction
@@ -20,6 +20,7 @@ Run lightup -b [brightness_value]
 - Fading backlight adjustments
 - Reload udev rules without reboot
 - Normalize brightness values
+- Inbuilt upgrade
 
 ## Alternatives
 acpilight is a nice alternative to lightup, and has better capabilities at 
