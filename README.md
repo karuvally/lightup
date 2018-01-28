@@ -16,7 +16,6 @@ Run lightup -b [brightness_value]
 
 ## Todo
 - Automated backlight path finding
-- Add increment and decrement switches
 - Fading backlight adjustments
 - Reload udev rules without reboot
 - Normalize brightness values
