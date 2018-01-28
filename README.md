@@ -1,5 +1,5 @@
 #Lightup
-An xbacklight replacement 
+An xbacklight replacement
 
 ## Introduction
 Lightup is a simple utility to change the backlight brightness. It was developed
@@ -12,17 +12,18 @@ longer works.
 - Reboot your machine
 
 ## Usage
-Run lightup -b <brightness_value>
+Run lightup -b [brightness_value]
 
 ## Todo
 - Automated backlight path finding
 - Add increment and decrement switches
 - Fading backlight adjustments
 - Reload udev rules without reboot
+- Normalize brightness values
 
 ## Alternatives
 acpilight is a nice alternative to lightup, and has better capabilities at 
 the moment
 
-## Troubleshooting
- - if you get permission error for `brightness` file, change its permission to 756 or higher.
+## Issues
+- The brightness value range will vary depending on your computer
