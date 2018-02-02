@@ -15,7 +15,6 @@ longer works.
 Run lightup -b [brightness_value]
 
 ## Todo
-- Automated backlight path finding
 - Fading backlight adjustments
 - Reload udev rules without reboot
 - Normalize brightness values
