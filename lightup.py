@@ -17,23 +17,25 @@ def brightness(brightness_file_path, function, value):
         brightness_value = brightness_file.readline().rstrip()
 
     if function == 'get':
-        print("current brightness is " + brightness_value) 
+        print("current brightness is " + brightness_value)
+        exit()
 
-    elif function == 'set':
-        with open(brightness_file_path, 'r+') as brightness_file:
-            brightness_file.write(value)
+    # keep the file opened for rest of the operations
+    brightness_file = open(brightness_file_path, 'w')
+
+    if function == 'set':
+        brightness_file.write(value)
 
     # common code for increment and decrement
     elif function:
-        brightness_file = open(brightness_file_path, 'r+')
-        current_value = brightness_file.readline().rstrip()
-
         if function == 'increment':
-            brightness_file.write(str(int(current_value) + int(value)))
-        elif function == 'decrement':
-            brightness_file.write(str(int(current_value) - int(value)))
+            brightness_file.write(str(int(brightness_value) + int(value)))
         
-        brightness_file.close()
+        elif function == 'decrement':
+            brightness_file.write(str(int(brightness_value) - int(value)))
+        
+    # close the file
+    brightness_file.close()
 
 
 # the main function
