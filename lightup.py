@@ -10,7 +10,6 @@ import shutil
 import argparse
 
 # todo
-# exception if set value is greater than 100
 # if current_brightness + increment_value > max_brightness, set max_brightness
 # if current_brightness - decrement_value < 0, set 0
 
@@ -36,16 +35,27 @@ def brightness(brightness_directory, function, value):
     brightness_file = open(brightness_directory + '/brightness', 'w')
 
     if function == 'set':
+        if value != None and value < 0 or value > 100:
+            print('error: the valid brightness range is between 0 and 100')
+            exit()
+
         brightness_file.write(str(value * step_value))
 
-    # debug! convert value to int
     if function == 'increment':
-        brightness_file.write(str(int(brightness_value) +
-        int(value) * step_value))
-        
+        increment_value = int(brightness_value) + int(value) * step_value
+
+        if increment_value > int(max_brightness_value):
+            increment_value = max_brightness_value
+
+        brightness_file.write(str(increment_value))
+
     elif function == 'decrement':
-        brightness_file.write(str(int(brightness_value) -
-        int(value) * step_value))
+        decrement_value = int(brightness_value) - int(value) * step_value
+
+        if decrement_value < 0:
+            decrement_value = 0
+
+        brightness_file.write(str(decrement_value))
         
     # close the file
     brightness_file.close()
