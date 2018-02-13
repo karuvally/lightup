@@ -12,18 +12,18 @@ import argparse
 
 # set or get the brightness
 def brightness(brightness_file_path, function, value):
+    # get the current brightness value
+    with open(brightness_file_path, 'r') as brightness_file:
+        brightness_value = brightness_file.readline().rstrip()
+
     if function == 'get':
-        brightness_file = open(brightness_file_path, 'r')
-        print("current brightness is " + brightness_file.readline().rstrip())
-        brightness_file.close()
+        print("current brightness is " + brightness_value) 
 
     elif function == 'set':
-        brightness_file = open(brightness_file_path, 'r+')
-        brightness_file.write(value)
-        brightness_file.close()
+        with open(brightness_file_path, 'r+') as brightness_file:
+            brightness_file.write(value)
 
     # common code for increment and decrement
-
     elif function:
         brightness_file = open(brightness_file_path, 'r+')
         current_value = brightness_file.readline().rstrip()
