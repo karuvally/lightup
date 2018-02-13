@@ -1,6 +1,13 @@
 #!/bin/bash
 # lightup installation script, release 0.5
 
+# quit if not root
+if [ `whoami` != "root" ];
+then
+    echo "please run the script as super user"
+    exit
+fi
+
 # copy the files
 echo "copying files..."
 mkdir /opt/lightup
