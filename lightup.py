@@ -26,13 +26,11 @@ def brightness(brightness_file_path, function, value):
     if function == 'set':
         brightness_file.write(value)
 
-    # common code for increment and decrement
-    elif function:
-        if function == 'increment':
-            brightness_file.write(str(int(brightness_value) + int(value)))
+    if function == 'increment':
+        brightness_file.write(str(int(brightness_value) + int(value)))
         
-        elif function == 'decrement':
-            brightness_file.write(str(int(brightness_value) - int(value)))
+    elif function == 'decrement':
+        brightness_file.write(str(int(brightness_value) - int(value)))
         
     # close the file
     brightness_file.close()
