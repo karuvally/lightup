@@ -12,6 +12,7 @@ import argparse
 # todo
 # exception if set value is greater than 100
 # if current_brightness + increment_value > max_brightness, set max_brightness
+# if current_brightness - decrement_value < 0, set 0
 
 # set or get the brightness
 def brightness(brightness_directory, function, value):
@@ -28,7 +29,7 @@ def brightness(brightness_directory, function, value):
     
     if function == 'get':
         print("current brightness is " +
-        str(int(brightness_value) / step_value))
+        str(int(brightness_value) / step_value) + ' percent')
         exit()
 
     # keep the file opened for rest of the operations
@@ -59,28 +60,28 @@ def main():
     parser = argparse.ArgumentParser(description=
     'Lightup v0.4, adjust your backlight brightness')
 
-    parser.add_argument('-b', '--brightness', help=
+    parser.add_argument('-b', '--brightness', type=int, help=
     'set brightness to given value')
     
-    parser.add_argument('-i', '--increment', help=
+    parser.add_argument('-i', '--increment', type=int, help=
     'decrease brightness by given value')
     
-    parser.add_argument('-d', '--decrement', help=
+    parser.add_argument('-d', '--decrement', type=int, help=
     'decrease brightness by given value')
     
     arguments = parser.parse_args()
     
     # set brightness using the -b argument
     if arguments.brightness:
-        brightness(brightness_directory, 'set', int(arguments.brightness))
+        brightness(brightness_directory, 'set', arguments.brightness)
 
     # increase brightness using the -i argument
     elif arguments.increment:
-        brightness(brightness_directory, 'increment', int(arguments.increment))
+        brightness(brightness_directory, 'increment', arguments.increment)
 
     # decrease brightness using the -d argument
     elif arguments.decrement:
-        brightness(brightness_directory, 'decrement', int(arguments.decrement))
+        brightness(brightness_directory, 'decrement', arguments.decrement)
         
     # return current brightness
     else:
