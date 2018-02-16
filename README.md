@@ -12,14 +12,7 @@ longer works.
 - Reboot your machine
 
 ## Usage
-Run lightup -b [brightness_value]
-
-## Todo
-- Automated backlight path finding
-- Fading backlight adjustments
-- Reload udev rules without reboot
-- Normalize brightness values
-- Inbuilt upgrade
+Run lightup -b [brightness_value] 
 
 ## Alternatives
 acpilight is a nice alternative to lightup, and has better capabilities at 
