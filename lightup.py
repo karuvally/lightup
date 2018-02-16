@@ -9,9 +9,6 @@ import os
 import shutil
 import argparse
 
-# todo
-# if current_brightness + increment_value > max_brightness, set max_brightness
-# if current_brightness - decrement_value < 0, set 0
 
 # set or get the brightness
 def brightness(brightness_directory, function, value):
@@ -68,7 +65,7 @@ def main():
     
     # parse run-time arguments
     parser = argparse.ArgumentParser(description=
-    'Lightup v0.4, adjust your backlight brightness')
+    'Lightup v0.5, adjust your backlight brightness')
 
     parser.add_argument('-b', '--brightness', type=int, help=
     'set brightness to given value')
