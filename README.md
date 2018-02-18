@@ -24,6 +24,3 @@ Run lightup -b [brightness_value]
 ## Alternatives
 acpilight is a nice alternative to lightup, and has better capabilities at 
 the moment
-
-## Issues
-- The brightness value range will vary depending on your computer
