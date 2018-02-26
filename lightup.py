@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# lightup, release 0.5
+# lightup, release 0.6
 # Thanks to wavexx(acpilight) for udev idea
 # Copyright 2017, Aswin Babu Karuvally
 # Copyright 2018, Aswin Babu Karuvally, Bipin Peacerebel
@@ -60,8 +60,11 @@ def brightness(brightness_directory, function, value):
 
 # the main function
 def main():
-    # set some essential variables
-    brightness_directory = '/sys/class/backlight/intel_backlight'
+    # set the brightness directory
+    if os.path.isdir('/sys/class/backlight/intel_backlight'):
+        brightness_directory = '/sys/class/backlight/intel_backlight'
+    elif os.path.isdir('/sys/class/backlight/acpi_video0'):
+        brightness_directory = '/sys/class/backlight/acpi_video0'
     
     # parse run-time arguments
     parser = argparse.ArgumentParser(description=
