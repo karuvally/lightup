@@ -1,5 +1,5 @@
 #!/bin/bash
-# lightup installation script, release 0.5
+# lightup installation script, release 0.6
 
 # quit if not root
 if [ `whoami` != "root" ];
