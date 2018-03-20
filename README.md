@@ -18,7 +18,7 @@ longer works.
 
 ## Integrating Lightup with OpenBox 
 - Open ~/.config/openbox/rc.xml 
-- Locate <!-- Keybindings for running aplications --> under <keyboard> section and add the following
+- Locate \<!-- Keybindings for running aplications --> under \<keyboard> section and add the following
     <keybind key="XF86MonBrightnessUp">
         <action name="Execute">
             <command>lightup -i 2</command>
