@@ -12,7 +12,9 @@ longer works.
 - Reboot your machine
 
 ## Usage
-Run lightup -b [brightness_value] 
+- Run lightup -b BRIGHTNESS_VALUE
+- To increment brightness, use lightup -i INCREMENT_VALUE
+- To decrement brightness, use lightup -d DECREMENT_VALUE
 
 ## Alternatives
 acpilight is a nice alternative to lightup, and has better capabilities at 
