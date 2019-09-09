@@ -14,6 +14,9 @@ mkdir /opt/lightup
 cp lightup.py /opt/lightup
 cp 90-backlight.rules /etc/udev/rules.d
 
+#reload udev rules without reboot
+udevadm control --reload-rules
+
 # make links
 echo "making links..."
 ln -s /opt/lightup/lightup.py /usr/bin/lightup
